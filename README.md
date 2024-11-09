@@ -1,49 +1,79 @@
 # Sem06-AdvancedDataStructures
 
 ### Course Overview
-This repository contains assignments from the **Advanced Data Structures** course taken in my sixth semester. The course focused on specialized data structures for high-dimensional and spatial data, including **KD-Trees** and parallel **Priority Queues**. Topics covered included the **curse of dimensionality**, clustering algorithms, and various advanced data structures, with both practical implementations and supporting theoretical foundations from research papers.
+This repository contains assignments from the **Advanced Data Structures** course taken in my sixth semester. The course covered specialized data structures for high-dimensional and parallel processing, such as **KD-Trees** and **parallel queues/lists**. Key topics included understanding the **curse of dimensionality**, clustering algorithms, and efficient structures for both spatial and concurrent data handling.
 
 ### Learning Outcomes
-Through this course, I gained skills in:
-- Implementing advanced data structures like **KD-Trees** and parallel **Priority Queues**.
-- Understanding and addressing challenges related to high-dimensional data, particularly the curse of dimensionality.
-- Applying data structures to optimize spatial searches and prioritized tasks.
+In this course, I developed skills in:
+- Implementing and managing complex data structures like **KD-Trees** for high-dimensional data.
+- Developing concurrent data structures, including a parallel **Priority Queue**, **List**, and **Queue**.
+- Optimizing data structure performance in multi-threaded environments for efficient task management.
 
 ### Project and Assignments
 
 #### 1. PriorityQueue (Parallel Priority Queue)
-   - **Description**: A custom implementation of a **Priority Queue** designed to operate in parallel, managing high-priority tasks efficiently.
+   - **Description**: A custom **Priority Queue** implementation that operates in parallel for efficient management of high-priority tasks.
    - **Features**:
-     - Uses a binary heap with support for both max and min configurations.
-     - Resizable structure to handle dynamic data, with `push`, `pop`, and `front` operations for prioritized task management.
-   - **Purpose**: This assignment demonstrated the importance of efficient task prioritization in parallel environments, optimized for performance in concurrent use cases.
-
+     - Utilizes a binary heap structure, supporting both max and min configurations.
+     - Designed for concurrent operations, including `push`, `pop`, and `front` methods.
+   - **Purpose**: Demonstrates priority management in a multi-threaded environment with optimizations for concurrent execution.
    - **Usage**:
      - Navigate to the `PriorityQueue` directory.
-     - Compile using the provided CMake configuration (`CMakeLists.txt` for C++14 standard).
+     - Compile with CMake:
        ```bash
        cmake ..
        make
-       ./EDA-parcial  # Runs the Priority Queue executable
+       ./EDA-parcial  # Executes the Priority Queue
        ```
 
 #### 2. KD-Tree (K-Dimensional Tree)
-   - **Description**: A **KD-Tree** implementation designed for storing and querying spatial data in `N` dimensions, allowing for efficient multi-dimensional searches.
+   - **Description**: An implementation of a **KD-Tree**, used for efficient multi-dimensional data storage and spatial searches.
    - **Features**:
-     - Basic KD-Tree operations: insertion, search, and deletion.
-     - Partially implemented K-Nearest Neighbor (KNN) querying functions (`knn_query` and `knn_value`) as placeholders for further development.
-   - **Purpose**: This project introduced optimized structures for managing spatial data, laying a foundation for high-dimensional data applications, including clustering and multi-dimensional indexing.
-
+     - Supports insertion, deletion, and search operations for multi-dimensional points.
+     - Partial K-Nearest Neighbor (KNN) querying functionality, demonstrating spatial search potential.
+   - **Purpose**: Introduces efficient data handling for high-dimensional datasets, commonly used in clustering and spatial analysis.
    - **Usage**:
      - Navigate to the `KDtree` directory.
-     - Compile using the provided CMake configuration (`CMakeLists.txt` for C++11 standard).
+     - Compile with CMake:
        ```bash
        cmake ..
        make
-       ./kdtree_test  # Runs the KD-Tree executable
+       ./kdtree_test  # Executes the KD-Tree
+       ```
+
+#### 3. Parallel-list-main (Concurrent Linked List)
+   - **Description**: A **concurrent linked list** with thread-safe operations for adding and removing elements in parallel.
+   - **Features**:
+     - Implements locking mechanisms (`mutex`) to manage concurrent additions and removals.
+     - Uses threads to perform multiple insertions and deletions concurrently.
+   - **Purpose**: Demonstrates synchronization techniques in data structures and introduces parallelism for efficient list management.
+   - **Usage**:
+     - Navigate to the `Parallel-list-main` directory.
+     - Compile with CMake:
+       ```bash
+       cmake ..
+       make
+       ./List  # Executes the parallel list operations
+       ```
+
+#### 4. Parallel-queue-master (Producer-Consumer Queue)
+   - **Description**: A **concurrent queue** using the producer-consumer model, where multiple producers and consumers operate on a shared queue.
+   - **Features**:
+     - Thread-safe `push` and `pop` operations using `mutex` and `condition_variable` for managing producer-consumer relationships.
+     - Producers generate data, and consumers process it, showcasing a classic concurrent processing pattern.
+   - **Purpose**: Illustrates the producer-consumer model with thread-safe access in a shared environment, commonly used for buffering and task scheduling.
+   - **Usage**:
+     - Navigate to the `Parallel-queue-master` directory.
+     - Compile with CMake:
+       ```bash
+       cmake ..
+       make
+       ./producer_consumer <num_producers> <num_consumers>  # Runs the producer-consumer queue
        ```
 
 ### Project Structure
-Each assignment is in its own directory, organized as follows:
-- **PQ**: Contains `PriorityQueue.h` and the necessary CMake configuration.
-- **KDtree**: Contains `KD-tree.hpp` along with CMake configuration and dependencies.
+Each assignment is organized into its own directory, each with a `CMakeLists.txt` file to facilitate compilation:
+- **PriorityQueue**: Contains `PriorityQueue.h` and CMake configuration for building.
+- **KDtree**: Contains `KD-tree.hpp` and necessary files for the KD-Tree.
+- **Parallel-list-main**: Includes `main.cpp` implementing a concurrent linked list with multi-threaded operations.
+- **Parallel-queue-master**: Contains `main.cpp` implementing the producer-consumer queue.
