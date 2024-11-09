@@ -22,8 +22,6 @@ Through this course, I gained skills in:
      - Navigate to the `PriorityQueue` directory.
      - Compile using the provided CMake configuration (`CMakeLists.txt` for C++14 standard).
        ```bash
-       mkdir build
-       cd build
        cmake ..
        make
        ./EDA-parcial  # Runs the Priority Queue executable
@@ -40,8 +38,6 @@ Through this course, I gained skills in:
      - Navigate to the `KDtree` directory.
      - Compile using the provided CMake configuration (`CMakeLists.txt` for C++11 standard).
        ```bash
-       mkdir build
-       cd build
        cmake ..
        make
        ./kdtree_test  # Runs the KD-Tree executable
